@@ -1,0 +1,34 @@
+view/layout/sidebar2.html
+view/assets
+view/template2.html
+../images
+
+===================================
+
+sequencia:
+INDEX->CONTROLLER/LOGIN->SISARQ->controller/validade/validade_options(seleciona view)->
+-> view/template2->view/layout/sidebar2.html->page_content()(mostra view)
+
+
+1)alterar a view template2
+head
+menu
+<body>
+fotter
+
+2) Alterar view de login  ok
+Head
+
+3)link 
+https://stackoverflow.com/questions/46573549/adding-background-image-to-ejs-file
+
+
+https://stackoverflow.com/questions/60121647/select-from-multiple-tables-in-sequelize
+    
+https://gist.github.com/vonvick/1c5875bee7eb20ec998c660458b47667
+
+https://pt.stackoverflow.com/questions/450775/select-no-sequelize ( top)
+
+let colaborador = await sequelize.query(`SELECT c.colaboradorId, c.nome as nomeColaborador, g.nome as nomeCargo ,s.nome as nomeSetor FROM colaborador c, setor s, cargo g 
+WHERE c.setorId = s.setorId AND  c.cargoId = g.cargoId AND c.setorId = ${req.user.setorId} AND c.matricula = ${matriculaId} LIMIT 1`, 
+{ type: QueryTypes.SELECT });

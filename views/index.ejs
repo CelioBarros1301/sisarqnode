@@ -1,0 +1,94 @@
+<%- include('./partials/headerlogin.ejs') %>
+
+<body class="hold-transition login-page" >
+<div class="login-box">
+  <div class="login-logo">
+    <img src="/img/documents.png" alt="logo" height="120" width="180">
+   <!--  <a href="#" class="text-white"><b>Prefeitura de </b> Pacatuba</a> -->
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Entre para inciciar uma sessão</p>
+    <form action="/usuario/login" method="POST">
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" name="email" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <% if (msg1 !=undefined) {%>
+          <span class="text-danger" ><%=msg1 %></span>
+        <%}%>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" name="senha" placeholder="Senha">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          <% if (msg2 !=undefined) {%>
+            <span class="text-danger" ><%=msg2 %></span>
+          <%}%>
+      </div>
+      
+      <div class="row">
+        <div class="col-xs-8">
+          <!--<div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Lembrar-me
+            </label>
+          </div>
+          -->
+        </div>
+         
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+    <!-- 
+    <div class="social-auth-links text-center">
+      <p>- Ou -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+        Google+</a>
+    </div>
+     -->
+    <hr />
+    <!-- Comentado por nao implementado
+    <a href="javascript:void(0);" data-toggle="modal" data-target="#fogot-pass" class="text-center">Esqueci minha senha</a><br>
+    -->
+    <a href="http://a4dev.com.br" target="_blank" class="text-center">SISARQ by Celio Barros &copy;</a>
+    <!-- esqueci minha senha -->
+    <div class="modal fade" id="fogot-pass" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Redefinição de senha</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            
+            <div class="row">
+              <div class="form-group col-md-9">
+                <label>Seu Email</label>
+                <input type="email" id="email" class="form-control" />
+              </div>
+              <div class="form-group col-md-3">
+                <br />
+                <button class="btn btn-primary" id="verify" type="button"><i class="fa fa-check-circle-o"></i> <b>verificar</b></button>
+              </div>
+            </div>
+            <div class="response"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary"><i class="fa fa-check-square-o"></i> <b>Modificar Senha</b></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.login-box-body -->
+</div>
+</body>
+<%- include('./partials/footerlogin.ejs') %>
