@@ -1,0 +1,15 @@
+PENDENCIAS:
+
+1) Ver tratamento de session, para guarda
+ID do usuario logado para montar o menu do sistema conforme 
+usuario logado
+
+2) Monta funcão geraMenu(id_usu) para gerar o menu, tendo
+como parametro o ID do usuario logado e retorno
+da funcao HTML contado com o menu
+
+3) Ver Sequelize para retorno COUNT e colunas 
+de um select , COUNT vai servir como controle do tamanho 
+do array, a ser utilizado da funcao geraMenu(id_usu)
+
+4) Refazer o tratamento das mensagem de erro do login 
