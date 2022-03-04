@@ -3,6 +3,7 @@ const app=express();
 const session=require('express-session');
 const connection=require("./database/database");
 
+
 //const categoriesController = require("./categories/CategoriesController")
 //const articlesController   = require("./articles/ArticlesController")
 //const usersController      = require('./users/UsersController')
@@ -15,7 +16,8 @@ const connection=require("./database/database");
 const usuariosController      = require('./usuarios/UsuariosController')
 const menusController         = require('./menus/MenusController')
 
-
+//Utilitarios
+const utilitarios  =require('./utilitarios/funcoes');
 
 // Tabelas do Banco 
 const Menu   = require('./menus/Menu');
@@ -25,12 +27,20 @@ const MenuUsuario=require('./usuarios/MenuUsuario');
 
 app.set('view engine','ejs');
 
+// Habilitando session
+// 1s  -  1.000 miliseg
+// 60s - 60.000 milisegs
+// 1m  - 60.000 milisegs
+// 60m - 3.600.000 milisegs
+// 1h  - 3.600.000 milisegs
+// 2h  - 7.200.000 milisegq
 
+// redis - banco de dados para gravar session
 app.use(session({
-  secret:"123456",
+  secret:"SISARQNODE22",
   resave :false,
-    saveUninitialized: true,
-  cookie:{maxAge:3000000000}
+  saveUninitialized: true,
+  cookie:{maxAge:7200000}
 }))
 app.use(express.static('public'));
 
@@ -46,7 +56,21 @@ connection
     console.log(error)
   })
 
+
 app.get('/session',(req,res)=>{
+     // Criando session
+     // Alterar para criar quando do login executado com sucesso
+     // Gravar id_usu,nome_usuario,sta_usuario,per_usuario,lib_usuario
+     // apagar session
+     // req.session.user=undefined
+     req.session.user={
+            id :Usuario.id_usu,
+            nome: Usuario.nome_usuario,
+            status:Usuario.sta_usuario,
+            permissao:Usuario.per_usuario,
+            liberado:Usuario.lib_usuario
+     }
+
      req.session.treinamento="Formação Node.js";
      req.session.ano=2022;
      req.session.email="celio@gmail.com";
@@ -54,16 +78,28 @@ app.get('/session',(req,res)=>{
 } );
 
 app.get('/leitura',(req,res)=>{
+    // leitura de session
+    // req.session.treinamento;
+  if ( req.session.treinamento ==undefined ) {
+    res.send ('nao tem session criado');
+
+  }else {
   res.json({
     treinamento:req.session.treinamento,
     ano:req.session.ano,
     email:req.session.email
-  })
+  })}
 });
 
 app.get('/',function(req,res){
     res.render('index',{msg1:undefined,msg2:undefined})
 
+})
+
+app.get('/menu',function(req,res){
+   var vMenu=utilitarios.geraMenu(1);
+   console.log('VALOR RETORNO:'+vMenu)
+    res.send (vMenu);
 })
 
 app.get('/user',function(req,res){
@@ -172,7 +208,7 @@ app.get('/user',function(req,res){
 
 
 
-    //console.log(menuHtml);
+    console.log(menuHtml);
      res.send(menuHtml);
    })
 })
