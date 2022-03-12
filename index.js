@@ -18,6 +18,7 @@ const menusController         = require('./menus/MenusController')
 
 //Utilitarios
 const utilitarios  =require('./utilitarios/funcoes');
+const utilitarios1  =require('./utilitarios/teste');
 
 // Tabelas do Banco 
 const Menu   = require('./menus/Menu');
@@ -96,10 +97,15 @@ app.get('/',function(req,res){
 
 })
 
-app.get('/menu',function(req,res){
-   var vMenu=utilitarios.geraMenu(1);
-   console.log('VALOR RETORNO:'+vMenu)
+app.get('/menu', async function(req,res){
+  console.log('incio chamada');
+   var vMenu=await utilitarios.geraMenu(1);
+   console.log('fim chamada');
+   if (vMenu !=undefined) {
     res.send (vMenu);
+   }else{
+     res.send('<p>Sem permisão');
+   }
 })
 
 app.get('/user',function(req,res){

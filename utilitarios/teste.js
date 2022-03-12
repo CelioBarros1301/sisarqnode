@@ -2,21 +2,34 @@ const Menu   = require('../menus/Menu');
 const Usuario= require('../usuarios/Usuario');
 const MenuUsuario=require('../usuarios/MenuUsuario');
 
-function fMenu(menu)
-{
-      return new Promise((resolve, reject) => {
-      var menuhtml;
-      menuHtml="";
-      console.log('entradada funcao'); 
-      countMenu=0;
-      menu.forEach(item=>{
-         countMenu=countMenu+1;
-      })
+
+function geraMenu1(idUsuario){
+    var menuhtml;
+    menuHtml=null;
+
+    
+     MenuUsuario.findAll({
+     where :{
+              id_usu :1,
+            },
+     include: [
+          { 
+             association: "Menu",
+             attributes: ["nome_menu","seq_menu",'tipo_menu','icone_menu','href_menu'],
+             order:[ ['seq_menu'],['tipo_menu']]
+          }
+         
+              ]
+    }).then (menu=>{
+       countMenu=0;
+       menu.forEach(item=>{
+          countMenu=countMenu+1;
+       })
        //console.log('entrada 01');
-      indice =0;
+       indice =0;
       // menuHtml="";
       console.log('count:'+countMenu)
-      while( indice<countMenu )
+       while( indice<countMenu )
         {    
           //  console.log('entrada 02');
            item=menu[indice]['Menu']['seq_menu'].substring(0,2);
@@ -94,37 +107,11 @@ function fMenu(menu)
             }
         
         } //while
-        if ( menuHtml !=undefined ) {
-            resolve(menuHtml);
-        } else {
-            reject(menuHtml);
-        }
+        return  menuHtml 
+  
     })
+    
 };
 
-
-async function geraMenu(idUsuario){
-    
-    
-    vMenu=await  MenuUsuario.findAll({
-     where :{
-              id_usu :1,
-            },
-     include: [
-          { 
-             association: "Menu",
-             attributes: ["nome_menu","seq_menu",'tipo_menu','icone_menu','href_menu'],
-             order:[ ['seq_menu'],['tipo_menu']]
-          }
-         
-              ]
-    });
-    return await  fMenu(vMenu);
-     
-};
-
-
- module.exports={ geraMenu };
-
-
+module.exports={ geraMenu1 };
  

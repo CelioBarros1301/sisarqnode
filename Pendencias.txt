@@ -19,3 +19,8 @@ link https://bootcamp-rocketacademy-co.translate.goog/4-backend-structure/4.1-or
 
 https://github.com/sequelize/sequelize/issues/11403 (top)
 
+
+ler os dois abaixo
+https://www.tabnine.com/code/javascript/functions/findAll  
+https://sequelize.org/master/manual/model-querying-basics.html
+
