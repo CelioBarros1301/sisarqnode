@@ -72,24 +72,26 @@ app.get('/session',(req,res)=>{
             liberado:Usuario.lib_usuario
      }
 
-     req.session.treinamento="Formação Node.js";
-     req.session.ano=2022;
-     req.session.email="celio@gmail.com";
-     res.send("sessao gerada");
+     //req.session.treinamento="Formação Node.js";
+     //req.session.ano=2022;
+     //req.session.email="celio@gmail.com";
+     //res.send("sessao gerada");
 } );
 
 app.get('/leitura',(req,res)=>{
     // leitura de session
     // req.session.treinamento;
-  if ( req.session.treinamento ==undefined ) {
+  if ( req.session.user ==undefined ) {
     res.send ('nao tem session criado');
 
   }else {
+    //res.send('session')
   res.json({
-    treinamento:req.session.treinamento,
-    ano:req.session.ano,
-    email:req.session.email
-  })}
+    id:req.session.user.id,
+    nome:req.session.user.nome,
+    menu:req.session.user.menu
+  })
+  }
 });
 
 app.get('/',function(req,res){
@@ -102,7 +104,7 @@ app.get('/menu', async function(req,res){
    var vMenu=await utilitarios.geraMenu(1);
    console.log('fim chamada');
    if (vMenu !=undefined) {
-    res.send (vMenu);
+    res.render('menu',{menu:vMenu});
    }else{
      res.send('<p>Sem permisão');
    }
@@ -219,6 +221,11 @@ app.get('/user',function(req,res){
    })
 })
 
+app.use("/",usuariosController);
+//app.use("/",categoriesController);
+//app.use("/",articlesController);
+
+
 app.listen(8080,()=>{
   console.log("App rodando")
-})
+});

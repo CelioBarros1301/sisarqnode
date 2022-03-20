@@ -108,7 +108,7 @@ async function geraMenu(idUsuario){
     
     vMenu=await  MenuUsuario.findAll({
      where :{
-              id_usu :1,
+              id_usu :idUsuario,
             },
      include: [
           { 
