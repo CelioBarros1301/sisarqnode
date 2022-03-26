@@ -34,13 +34,13 @@
    
         
    menuusuario=menuusuario+'<li><a class="sidebar-minify-btn" data-click="sidebar-minify" href="javascript:;"><i class="fa fa-angle-double-left"></i></a></li>'
-   -- Correção do HTML 
+   // Correção do HTML 
    menuusuario=menuusuario.replaceAll('&gt;', '>')
    menuusuario=menuusuario.replaceAll('&lt;', '<')
    menuusuario=menuusuario.replaceAll("&#34;","'")
-   console.log(menuusuario)
+   //console.log(menuusuario)
    
-      const menu=document.getElementById('menuSistema');
+   const menu=document.getElementById('menuSistema');
    let item = document.createElement("li");
    item.innerHTML =menuusuario;
    menu.appendChild(item);

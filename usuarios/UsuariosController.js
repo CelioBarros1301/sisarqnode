@@ -28,13 +28,13 @@ router.post('/usuario/login',async function (req,res){
     var menuUsuario
      
     // Verificar Email Cadastrado
-    console.log('antes');
+    //console.log('antes');
     usuario= await Usuario.findOne({
         where:{log_usuario:email}
     });
     
     if (usuario!=undefined){
-        console.log(usuario.sen_usuario);
+        //console.log(usuario.sen_usuario);
         if ( usuario.sen_usuario!=senha ){
             msg2="Senha Invalida!!!";
         //}else if (usuario.sta_usuario!=$logado && usuario.sta_usuario!="" ){
@@ -45,7 +45,7 @@ router.post('/usuario/login',async function (req,res){
         {
             msg2='Usuário Sem Permissão'   
         }else{
-            console.log("criando session");
+            //console.log("criando session");
             req.session.user={
                 id :usuario.id_usu,
                 nome: usuario.nome_usuario,
@@ -61,12 +61,12 @@ router.post('/usuario/login',async function (req,res){
                     nome: usuario.nome_usuario,
                     status:usuario.sta_usuario,
                     permissao:usuario.per_usuario,
-                    liberado:usuario.lib_usuario,
-                    menu:menuUsuario
+                    liberado:usuario.lib_usuario
+                    //menu:menuUsuario
                     }
                  
                 
-                console.log(menuUsuario)
+                //console.log(menuUsuario)
                 res.render('sisarq',{menu:menuUsuario,user:usuario});
         }
         if (msg2 !=undefined){
