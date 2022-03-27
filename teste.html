@@ -1,6 +1,8 @@
 <html>
     <head>
-
+       <style>
+           li {color:blue;background-color:red ;}
+       </style>
     </head>
     <body id='id1'>
         <ul id='id2'>
@@ -13,13 +15,19 @@
        // var linha ='<tr> <td >111111</td> <td>Celio</td></tr> <tr> <td >22222</td> <td>Celio</td></tr>';
        // var linha ='TESTE';
        //var linha ='<h1>teste</h1>';
-       var linha='<a href="#">  <i class="fa fa-unlock-alt"></i>   <span>Autorizados</span>  <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i>  </span></a><ul class="sub-menu"> ' 
+       var linha='<li>linha 01</li>' 
+        linha+='<li>linha 02</li>' 
+       
+   const att = document.createAttribute("data-widget");
+   att.value = "tree";
 
-
-  let tabela=document.getElementById('id2');
-  const para = document.createElement("li");
+  let tabela=document.getElementById('id1');
+  let  para = document.createElement("ul");
   para.innerHTML = linha;
- tabela.appendChild(para);
+  para.className='TESTE';
+  para.setAttributeNode(att);
+  tabela.appendChild(para);
+  
 
 
     </script>

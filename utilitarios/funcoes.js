@@ -29,19 +29,19 @@ function fMenu(menu)
                 if ( menu[indice]['stat_pro']=='1') 
                 {  
                 menuHtml+= '<li class="">';
-                menuHtml+= '   <a  href="?option=programa">';
-                menuHtml+= '     <i class="' +menu[indice]['Menu']['icone_menu']+'"></i> ';
-                menuHtml+= '     <span>' +menu[indice]['Menu']['nome_menu'] +'</span>';
-                menuHtml+= '   </a>';
+                menuHtml+= '<a  href="?option=programa">';
+                menuHtml+= '<i class="' +menu[indice]['Menu']['icone_menu']+'"></i>';
+                menuHtml+= '<span>' +menu[indice]['Menu']['nome_menu'] +'</span>';
+                menuHtml+= '</a>';
                 menuHtml+= '</li>';
                 }
                 else
                 {
                 menuHtml+= '<li class="">';
-                menuHtml+= '   <a href="?option='+menu[indice]['Menu']['href_menu']+'">';
-                menuHtml+= '     <i class="' +menu[indice]['Menu']['icone_menu']+'"></i> ';
-                menuHtml+= '     <span>' +menu[indice]['Menu']['nome_menu'] +'</span>';
-                menuHtml+= '   </a>';
+                menuHtml+= '<a href="?option='+menu[indice]['Menu']['href_menu']+'">';
+                menuHtml+= '<i class="' +menu[indice]['Menu']['icone_menu']+'"></i>';
+                menuHtml+= '<span>' +menu[indice]['Menu']['nome_menu'] +'</span>';
+                menuHtml+= '</a>';
                 menuHtml+= '</li>';
                 }
                 indice++;
@@ -58,11 +58,11 @@ function fMenu(menu)
                     if (menu[indice]['Menu']['tipo_menu']=='0')
                     {
                         menuHtml+='<a href="#">';
-                        menuHtml+='  <i class="'+menu[indice]['Menu']['icone_menu']+'"></i> '; 
-                        menuHtml+='  <span>' +menu[indice]['Menu']['nome_menu'] +'</span>';
-                        menuHtml+='  <span class="pull-right-container">';
-                        menuHtml+='     <i class="fa fa-angle-left pull-right"></i>'; 
-                        menuHtml+='  </span>';
+                        menuHtml+='<i class="'+menu[indice]['Menu']['icone_menu']+'"></i>'; 
+                        menuHtml+='<span>' +menu[indice]['Menu']['nome_menu'] +'</span>';
+                        menuHtml+='<span class="pull-right-container">';
+                        menuHtml+='<i class="fa fa-angle-left pull-right"></i>'; 
+                        menuHtml+='</span>';
                         menuHtml+='</a>';
                         menuHtml+='<ul class="sub-menu">';
                     }
@@ -72,20 +72,20 @@ function fMenu(menu)
                         if ( menu[indice]['stat_pro']=='1') 
                         {
                             menuHtml+='<li>';
-                            menuHtml+= '   <a  href="?option=programa">';
+                            menuHtml+= '<a  href="?option=programa">';
                             //$menuHtml.='   <a disabled href="#">';
-                            menuHtml+='     <i class="' +menu[indice]['Menu']['icone_menu']+'"></i> ';
+                            menuHtml+='<i class="' +menu[indice]['Menu']['icone_menu']+'"></i>';
                             menuHtml+=      menu[indice]['Menu']['nome_menu'];
-                            menuHtml+='   </a>';
+                            menuHtml+='</a>';
                             menuHtml+='</li>';
                         }
                         else
                         {            
                             menuHtml+='<li>';
-                            menuHtml+='   <a href="?option='+menu[indice]['Menu']['href_menu']+'">';
-                            menuHtml+='     <i class="' +menu[indice]['Menu']['icone_menu']+'"></i> ';
+                            menuHtml+='<a href="?option='+menu[indice]['Menu']['href_menu']+'">';
+                            menuHtml+='<i class="' +menu[indice]['Menu']['icone_menu']+'"></i>';
                             menuHtml+=      menu[indice]['Menu']['nome_menu'];
-                            menuHtml+='   </a>';
+                            menuHtml+='</a>';
                             menuHtml+='</li>';
                         }
         
