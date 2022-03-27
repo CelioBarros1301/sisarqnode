@@ -40,11 +40,15 @@
    menuusuario=menuusuario.replaceAll("&#34;","'")
    //console.log(menuusuario)
    
+   // Criar Atributo 
    const vAtributo = document.createAttribute("data-widget");
    vAtributo.value = "tree";
-
+   
+   // Guardar Elemente id MenuSistema
    const menu=document.getElementById('menuSistema');
+   // Criar Elemento UL
    let item = document.createElement("ul");
+   // Incluir Class Nav    
    item.className='nav';
    item.setAttributeNode(vAtributo);
    item.innerHTML =menuusuario;
